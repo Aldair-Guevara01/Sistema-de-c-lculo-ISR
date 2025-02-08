@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+    --primary-color: #4CAF50;
+    --danger-color: #ff4444;
+    --bg-dark: #1e1e2f;
+    --container-bg: #2a2a3b;
+    --text-color: #fff;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1e1e2f 0%, #2a2a3b 100%);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    transition: background 0.5s ease;
+}
+
+.container {
+    background: linear-gradient(145deg, #2a2a3b, #252536);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3),
+                inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    text-align: center;
+    width: 380px;
+    position: relative;
+    backdrop-filter: blur(10px);
+    animation: containerFadeIn 0.5s ease-out;
+}
+
+@keyframes containerFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    color: var(--text-color);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+input {
+    width: calc(100% - 20px);
+    padding: 12px;
+    margin: 15px 0;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.3);
+}
+
+.resultado {
+    margin: 20px 0;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.resultado p {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    margin: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.resultado p:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateX(5px);
+    padding-left: 10px;
+    border-left: 3px solid var(--primary-color);
+}
+
+.liquido {
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--primary-color);
+    text-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+    padding: 15px 0 !important;
+    margin-top: 15px !important;
+    border-top: 2px solid rgba(76, 175, 80, 0.3) !important;
+}
+
+.botones {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+    padding: 10px;
+    gap: 15px;
+}
+
+.btn {
+    flex: 1;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn:hover::after {
+    width: 200px;
+    height: 200px;
+}
+
+.btn-calcular {
+    background: linear-gradient(45deg, #4CAF50, #45a049);
+    color: white;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.btn-borrar {
+    background: linear-gradient(45deg, #ff4444, #cc0000);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 68, 68, 0.3);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animación para los resultados cuando cambien */
+.resultado span {
+    transition: all 0.3s ease;
+}
+
+.resultado span.update {
+    animation: updateValue 0.5s ease;
+}
+
+@keyframes updateValue {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+        color: var(--primary-color);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .container {
+        width: 90%;
+        margin: 20px;
+        padding: 20px;
+    }
+}
